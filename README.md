@@ -1,2 +1,3 @@
-# justin_wise_round2
-Harvard College Exulting Group
+# Harvard College Exulting Group
+
+The most holy nest of reptiles north of the Charles River!
