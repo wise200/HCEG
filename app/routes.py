@@ -83,6 +83,21 @@ def submit():
 def charity():
     return redirect('https://harvardcbe.com')
 
+@app.errorhandler(404)
+def not_found_error(error):
+    info = {'title': 'FILE NOT FOUND',
+            'homepage': False,
+            'banner_img': 'eye_of_providence.jpg'}
+    return render_template('404.html', info=info), 404
+
+@app.errorhandler(500)
+def not_found_error(error):
+    db.session.rollback()
+    info = {'title': 'SERVER ERROR',
+            'homepage': False,
+            'banner_img': 'eye_of_providence.jpg'}
+    return render_template('500.html', info=info), 500
+
 # dead links
 @app.route('/about')
 @app.route('/analysts/application')
