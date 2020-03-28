@@ -1,4 +1,6 @@
 flask
 flask-wtf
+flask-sqlalchemy
+flask-migrate
 wtforms
 python-dotenv
