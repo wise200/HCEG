@@ -1,7 +1,7 @@
 <!doctype html>
 <head>
-	<link rel="stylesheet" href="site.css">
-	<link rel="icon" type="image/x-icon" href="./icon.ico">
+	<link rel="stylesheet" href="{{url_for('static', filename='site.css')}}">
+	<link rel="icon" type="image/x-icon" href="{{url_for('static', filename='icon.ico')}}">
 	<title>HCEG</title>
 </head>
 
@@ -50,7 +50,7 @@
 
       <li class="">
 
-            <a href="https://forms.gle/PVCp1WBGUtAgcUH38">APPLY</a>
+            <a href="/apply">APPLY</a>
 
       </li>
 
@@ -78,7 +78,7 @@
 				    		<!-- // logo or site title markup in nav area -->
 
 						      <div id="banner-wrapper" data-content-field="site-title">
-						        <a href="/"><img id="banner" src="./Logo_WhitePlain.png" alt="HCEG" /></a>
+							      <a href="/"><img id="banner" src="{{url_for('static', filename='Logo_WhitePlain.png')}}" alt="HCEG"/></a>
 						      </div>
 
 <nav id="main-navigation" class="main-nav" data-content-field="navigation">
@@ -92,7 +92,7 @@
 
     <li aria-haspopup="true" class="folder-collection folder"><a href="#" onClick="return false;">Analysts</a><span class="delimiter">/</span><div class="subnav"><ul><li class="page-collection"><a href="/analysts/overview">OVERVIEW</a></li><li class="page-collection"><a href="/analysts/application">APPLICATION PROCESS</a></li><li class="page-collection"><a href="/analysts/experience">ANALYST EXPERIENCE</a></li><li class="page-collection"><a href="/analysts/community">STRONG COMMUNITY</a></li><li class="page-collection"><a href="/analysts/faq">FAQ</a></li></ul></div></li>
 
-    <li class="page-collection"><a href="https://forms.gle/PVCp1WBGUtAgcUH38">APPLY</a><span class="delimiter">/</span></li>
+    <li class="page-collection"><a href="/apply">APPLY</a><span class="delimiter">/</span></li>
 
     <li class="page-collection"><a href="/consultforacauseresults19">Consult for a Cause</a><span class="delimiter">/</span></li>
 
@@ -123,7 +123,7 @@
 
 					      <div id="banner-wrapper" data-content-field="site-title">
 					        <a href="/" rel="bookmark">
-					        	<img id="banner" src="./Logo_WhitePlain.png" alt="HCEG" />
+					        	<img id="banner" src="{{url_for('static', filename='Logo_WhitePlain.png')}}" alt="HCEG" />
 
 						      </a>
 					      </div>
@@ -142,7 +142,7 @@
 				    		<!-- // logo or site title markup in nav area -->
 
 						      <div id="banner-wrapper" data-content-field="site-title">
-						        <a href="/"><img id="banner" src="./Logo_WhitePlain.png" alt="HCEG" /></a>
+						        <a href="/"><img id="banner" src="{{url_for('static', filename='Logo_WhitePlain.png')}}" alt="HCEG" /></a>
 						      </div>
 
 <nav id="main-navigation" class="main-nav" data-content-field="navigation">
@@ -156,7 +156,7 @@
 
     <li aria-haspopup="true" class="folder-collection folder"><a href="#" onClick="return false;">Analysts</a><span class="delimiter">/</span><div class="subnav"><ul><li class="page-collection"><a href="/analysts/overview">OVERVIEW</a></li><li class="page-collection"><a href="/analysts/application">APPLICATION PROCESS</a></li><li class="page-collection"><a href="/analysts/experience">ANALYST EXPERIENCE</a></li><li class="page-collection"><a href="/analysts/community">STRONG COMMUNITY</a></li><li class="page-collection"><a href="/analysts/faq">FAQ</a></li></ul></div></li>
 
-    <li class="page-collection"><a href="https://forms.gle/PVCp1WBGUtAgcUH38">APPLY</a><span class="delimiter">/</span></li>
+    <li class="page-collection"><a href="/apply">APPLY</a><span class="delimiter">/</span></li>
 
     <li class="page-collection"><a href="/consultforacauseresults19">Consult for a Cause</a><span class="delimiter">/</span></li>
 
@@ -187,7 +187,7 @@
 
             <div style="padding-bottom:74.97020721435547%;" class="image-block-wrapper   has-aspect-ratio" data-animation-role="image" data-description=""
             >
-              <img src="./about.jpg" alt="about.jpg" />
+              <img src="{{url_for('static', filename='about.jpg')}}" alt="about.jpg" />
 	    </div>
 
         </div>
@@ -202,7 +202,7 @@
 
             <div style="padding-bottom:75.35014343261719%;" class="image-block-wrapper   has-aspect-ratio" data-animation-role="image" data-description=""
             >
-	      <img src="./prospective.jpg" alt="prospective.jpg" \>
+	      <img src="{{url_for('static', filename='prospective.jpg')}}" alt="prospective.jpg" \>
             </div>
 
         </div>
@@ -217,7 +217,7 @@
 
             <div style="padding-bottom:75.6302490234375%;" class="image-block-wrapper   has-aspect-ratio" data-animation-role="image" data-description=""
             >
-	      <img src="./analysts.jpg" alt-"analysts.jpg" \>
+	      <img src="{{url_for('static', filename='analysts.jpg')}}" alt="analysts.jpg" \>
             </div>
 
         </div>
