@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div id="body" class="full-width" style="text-align: center">
+        <p>
+            Are you the Chosen One?
+        </p>
+        <form action="" method="post" novalidate>
+            {{ info.form.hidden_tag() }}
+            <p>
+                {{ info.form.username.label }}<br>
+                {{ info.form.username(size=32) }}
+	    </p>
+	    <p>
+		{% for error in info.form.username.errors %}
+		<span style="color: red">{{ error }}</span>
+		{% endfor %}
+            </p>
+            <p>
+                {{ info.form.password.label }}<br>
+                {{ info.form.password(size=32) }}
+	    </p>
+	    <p>
+		{% for error in info.form.password.errors %}
+		<span style="color: red">{{ error }}</span>
+		{% endfor %}
+            </p>
+            <p>{{ info.form.submit() }}</p>
+        </form>
+    </div>
+{% endblock %}

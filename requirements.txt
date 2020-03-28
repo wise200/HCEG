@@ -1,2 +1,4 @@
 flask
+flask-wtf
+wtforms
 python-dotenv
