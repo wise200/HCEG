@@ -25,7 +25,18 @@
 		<span style="color: red">{{ error }}</span>
 		{% endfor %}
             </p>
+	    <p>{{ info.form.remember_me }} {{ info.form.remember_me.label }} </p>
+	    {% with messages = get_flashed_messages() %}
+	    {% if messages %}
+            {% for cat, msg in messages %}
+	    {% if cat == 'error' %}
+            <p style="color: red">{{ msg }}</p>
+	    {% endif %}
+	    {% endfor %}
+	    {% endif %}
+	    {% endwith %}
             <p>{{ info.form.submit() }}</p>
         </form>
+	<p> Newly initiated? <a href="{{ url_for('register') }}">Register here.</a></p>
     </div>
 {% endblock %}
