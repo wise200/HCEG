@@ -7,6 +7,12 @@
         <p>
         (Or, want to <a href="{{ url_for('submit') }}">publish</a> a new proclamation?)
         </p>
+
+	{% if info.content|length == 0 %}
+	<p> Why are you here? There is no content yet. Go make some! </p>
+	<img src="{{ url_for('static', filename='confusion.gif') }}"></img>
+	{% endif %}
+
         <div class="row sqs-row">
             {% for item in info.content %}
                     <div class="sqs-block button-block sqs-block-button" data-block-type="53" id="block-yui_3_17_2_1_1545086799498_9241">

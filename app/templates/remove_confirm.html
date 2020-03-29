@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block content %}
+<div id="body" class="full-width" style="text-align: center">
+    <center>
+        <p>
+            Are you sure you want to delete this content?
+        </p>
+
+	{% for key, value in info.content.items() %}
+	<p>
+	    <strong>{{ key }}:</strong> {{ value }}
+	</p>
+	{% endfor %}
+
+	<div style="width: 50%">
+        <div class="row sqs-row">
+            <div class="col sqs-col-4 span-4">
+                <div class="sqs-block button-block sqs-block-button" data-block-type="53" id="block-yui_3_17_2_1_1545086799498_9241">
+                    <div class="sqs-block-content">
+                        <div class="sqs-block-button-container--center" data-animation-role="button" data-alignment="center" data-button-size="medium">
+            			<a href="{{ url_for('remove', id=info.content.id, confirm=true) }}" class="sqs-block-button-element--medium sqs-block-button-element">Yes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col sqs-col-4 span-4">
+                <div class="sqs-block button-block sqs-block-button" data-block-type="53" id="block-yui_3_17_2_1_1545086799498_13048">
+                    <div class="sqs-block-content">
+                        <div class="sqs-block-button-container--center" data-animation-role="button" data-alignment="center" data-button-size="medium">
+            			<a href="{{ url_for('remove') }}" class="sqs-block-button-element--medium sqs-block-button-element">No</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col sqs-col-4 span-4">
+                <div class="sqs-block button-block sqs-block-button" data-block-type="53" id="block-yui_3_17_2_1_1545086799498_13048">
+                    <div class="sqs-block-content">
+                        <div class="sqs-block-button-container--center" data-animation-role="button" data-alignment="center" data-button-size="medium">
+            			<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="sqs-block-button-element--medium sqs-block-button-element">Memes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+    </center>
+</div>
+{% endblock %}

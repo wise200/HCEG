@@ -55,3 +55,8 @@ def load_user(id):
 def get_all_items():
     return Client.query.all() + Analyst.query.all() + Page.query.all()
 
+def get_item(id):
+    items = [item for item in get_all_items() if item.id == id]
+    if len(items) != 1:
+        return -1
+    return items[0]

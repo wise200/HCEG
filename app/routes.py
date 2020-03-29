@@ -2,7 +2,7 @@ from app import app, db, photos
 from flask import render_template, redirect, url_for, flash, request
 from app.forms import LoginForm, RegistrationForm, CommentForm, RemoveForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Client, Analyst, get_all_items
+from app.models import *
 
 @app.route('/')
 @app.route('/index')
@@ -119,32 +119,33 @@ def submit_analyst():
 @login_required
 def remove():
     if request.args.get('id'):
-        return remove_item(request.args.get('id'))
+        if request.args.get('confirm'):
+            return remove_item(request.args.get('id'))
+        item = get_item(int(request.args.get('id')))
+        if item == -1:
+            return not_found_error()
+        # make item easily parseable for html
+        item = item.__dict__
+        if item['_sa_instance_state']:
+            item.pop('_sa_instance_state')
+        info = {'title': 'CONFIRMATION',
+                'homepage': False,
+                'banner_img': 'eye_of_providence.jpg',
+                'content': item}
+        return render_template('remove_confirm.html', info=info)
     info = {'title': 'REMOVE',
             'homepage': False,
             'banner_img': 'eye_of_providence.jpg',
             'content': get_all_items()}
     return render_template('remove.html', info=info)
-    '''
-    db_items = get_all_items()
-    form = RemoveForm()
-    form.items.choices = [(item.id, str(item)) for item in db_items]
-    if form.validate_on_submit():
-        print('data:', form.language.data)
-        return redirect(url_for('submit'))
-    info = {'title': 'REMOVE',
-            'homepage': False,
-            'banner_img': 'eye_of_providence.jpg',
-            'form': form}
-    return render_template('remove.html', info=info) '''
 
 @app.route('/remove/<id>')
 @login_required
 def remove_item(id):
-    items = [item for item in get_all_items() if item.id == int(id)]
-    print('items:', items)
-    for item in items:
-        db.session.delete(item)
+    item = get_item(int(id))
+    if item == -1:
+        return not_found_error()
+    db.session.delete(item)
     db.session.commit()
     return redirect(url_for('remove'))
 
