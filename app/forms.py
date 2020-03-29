@@ -1,7 +1,9 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
-from wtforms.validators import DataRequired, EqualTo, ValidationError
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, SelectMultipleField, widgets
+from wtforms.validators import DataRequired, EqualTo, ValidationError, Length
+from flask_wtf.file import FileField, FileRequired, FileAllowed
 from app.models import User
+from app import photos
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -26,3 +28,17 @@ class RegistrationForm(FlaskForm):
         correct = admin.check_password(password.data)
         if not correct:
             raise ValidationError('Invalid Master Password')
+
+class CommentForm(FlaskForm):
+    name = StringField('Name', validators=[DataRequired()])
+    text = TextAreaField('Text (1000 character max.)', validators=[DataRequired(), Length(min=1, max=1000)])
+    img = FileField('Logo', validators=[FileAllowed(photos, 'Images only.'), FileRequired('File was empty.')])
+    submit = SubmitField('Submit')
+
+class MultiCheckField(SelectMultipleField):
+    widget = widgets.ListWidget(prefix_label=False)
+    optin_widget = widgets.CheckboxInput()
+
+class RemoveForm(FlaskForm):
+    items = MultiCheckField('Content')
+    submit = SubmitField('Submit')

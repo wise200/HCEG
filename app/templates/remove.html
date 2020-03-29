@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block content %}
+<div id="body" class="full-width" style="text-align: center">
+    <center>
+        <p>
+            Welcome {{ current_user.username }}, which <strong>holy proclamations</strong> would you like to rescind today?
+        </p>
+        <p>
+        (Or, want to <a href="{{ url_for('submit') }}">publish</a> a new proclamation?)
+        </p>
+        <div class="row sqs-row">
+            {% for item in info.content %}
+                    <div class="sqs-block button-block sqs-block-button" data-block-type="53" id="block-yui_3_17_2_1_1545086799498_9241">
+                        <div class="sqs-block-content">
+                            <div class="sqs-block-button-container--center" data-animation-role="button" data-alignment="center" data-button-size="medium">
+            			<a href="{{ url_for('remove', id=item.id) }}" class="sqs-block-button-element--medium sqs-block-button-element">{{ item }}</a>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+        </center>
+</div>
+{% endblock %}

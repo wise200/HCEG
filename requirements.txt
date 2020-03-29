@@ -1,7 +1,9 @@
+werkzeug==0.16.1
 flask
 flask-wtf
 flask-sqlalchemy
 flask-migrate
 flask-login
+flask-uploads
 wtforms
 python-dotenv

@@ -17,34 +17,41 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password_hash, password)
 
     def __repr__(self):
-        return '<User {}>'.format(self.username)
+        return '<User \"{}\">'.format(self.username)
 
 class Client(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), index=True, unique=True)
     text = db.Column(db.String(1000))
-    author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    img = db.Column(db.String(128))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
-        return '<Post {}>'.format(self.text[:10])
+        return '<Client \"{}\">'.format(self.text[:15])
 
 class Analyst(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(128), index=True, unique=True)
+    full_name = db.Column(db.String(128), index=True, unique=True)
     text = db.Column(db.String(1000))
-    author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    img = db.Column(db.String(128))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
-        return '<Post {}>'.format(self.text[:10])
+        return '<Analyst \"{}\">'.format(self.text[:15])
 
 class Page(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    html = db.Column(db.String(16), unique=True)
-    author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    html = db.Column(db.String(32), unique=True)
+    text = db.Column(db.String(1000))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     
     def __repr__(self):
-        return '<Page {}>'.format(self.html)
+        return '<Page \"{}\">'.format(self.html)
 
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
+
+def get_all_items():
+    return Client.query.all() + Analyst.query.all() + Page.query.all()
+
