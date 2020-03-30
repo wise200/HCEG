@@ -1,7 +1,7 @@
 # Harvard College Exulting Group
 
 ### Setup
-These instructions assume you have Python 3.6 or newer installed.
+These instructions assume you have Python 3.6 or newer installed, as well as the ``venv`` package. To verify installation, you can run ``pip install venv`` or ``pip3 install venv``.
 
 #### Ubuntu / Mac OS
 I have written a script to run all the necessary commands. Simply navigate to this directory in your terminal, and run the following command:
