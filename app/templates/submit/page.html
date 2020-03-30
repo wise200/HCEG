@@ -1,0 +1,36 @@
+{% extends "submit/base.html" %}
+
+{% block body %}
+<p>What would you like to add at {{ info.path }} ?</p>
+<form action="" method="post" enctype="multipart/form-data" novalidate>
+    {{ info.form.hidden_tag() }}
+    <p>
+        {{ info.form.title.label }}<br>
+        {{ info.form.title(size=32) }}
+    </p>
+    <p>
+	{% for error in info.form.title.errors %}
+	<span style="color: red">{{ error }}</span>
+	{% endfor %}
+    </p>
+    <p>
+        {{ info.form.text.label }}<br>
+        {{ info.form.text(size=32) }}
+    </p>
+    <p>
+	{% for error in info.form.text.errors %}
+	<span style="color: red">{{ error }}</span>
+	{% endfor %}
+    </p>
+    <p>
+        {{ info.form.img.label }}<br>
+        {{ info.form.img(size=32) }}
+    </p>
+    <p>
+	{% for error in info.form.img.errors %}
+	<span style="color: red">{{ error }}</span>
+	{% endfor %}
+    </p>
+    <p>{{ info.form.submit() }}</p>
+</form>
+{% endblock %}

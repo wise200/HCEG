@@ -1,0 +1,6 @@
+#!/bin/bash
+
+flask db init
+./init/db-migrate "initial commit"
+export PYTHONPATH="$PWD"
+python ./init/db-init.py "$1" "$2"

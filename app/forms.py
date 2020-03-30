@@ -35,10 +35,8 @@ class CommentForm(FlaskForm):
     img = FileField('Logo', validators=[FileAllowed(photos, 'Images only.'), FileRequired('File was empty.')])
     submit = SubmitField('Submit')
 
-class MultiCheckField(SelectMultipleField):
-    widget = widgets.ListWidget(prefix_label=False)
-    optin_widget = widgets.CheckboxInput()
-
-class RemoveForm(FlaskForm):
-    items = MultiCheckField('Content')
+class PageForm(FlaskForm):
+    title = StringField('Page Title', validators=[DataRequired()])
+    img = FileField('Banner Image (Optional)', validators=[FileAllowed(photos, 'Images only.')])
+    text = TextAreaField('Text (You can use html syntax here.)', validators=[DataRequired(), Length(min=1, max=1000)])
     submit = SubmitField('Submit')

@@ -27,36 +27,42 @@ class Client(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
-        return '<Client \"{}\">'.format(self.text[:15])
+        return '<Client \"{}\">'.format(self.name)
 
 class Analyst(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    full_name = db.Column(db.String(128), index=True, unique=True)
+    name = db.Column(db.String(128), index=True, unique=True)
     text = db.Column(db.String(1000))
     img = db.Column(db.String(128))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
-        return '<Analyst \"{}\">'.format(self.text[:15])
+        return '<Analyst \"{}\">'.format(self.name)
 
 class Page(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    html = db.Column(db.String(32), unique=True)
-    text = db.Column(db.String(1000))
+    path = db.Column(db.String(32), unique=True)
+    title = db.Column(db.String(32))
+    text = db.Column(db.String(10000))
+    img = db.Column(db.String(128))
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     
     def __repr__(self):
-        return '<Page \"{}\">'.format(self.html)
+        return '<Page \"{}\">'.format(self.title)
 
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
 
 def get_all_items():
-    return Client.query.all() + Analyst.query.all() + Page.query.all()
+    items = Client.query.all() + Analyst.query.all() + Page.query.all()
+    for item in items:
+        setattr(item, 'class_name', item.__class__.__name__)
+    return items
 
-def get_item(id):
-    items = [item for item in get_all_items() if item.id == id]
+def get_item(id, class_name):
+    items = [item for item in get_all_items() if item.id == id and item.__class__.__name__ == class_name]
     if len(items) != 1:
+        print('found wrong number of items with id {} and class {}: {}'.format(id, class_name, items))
         return -1
     return items[0]

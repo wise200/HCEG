@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+<div id="body" class="full-width" style="text-align: center">
+    <center>
+        <p>
+	    Where do you want your new page to go? These are all empty links in the website that current redirect to a <a href="en.wikipedia/org/Special:Random">random wikipedia article</a>.
+        </p>
+
+        <div class="row sqs-row">
+            {% for path in info.paths %}
+                    <div class="sqs-block button-block sqs-block-button" data-block-type="53" id="block-yui_3_17_2_1_1545086799498_9241">
+                        <div class="sqs-block-content">
+                            <div class="sqs-block-button-container--center" data-animation-role="button" data-alignment="center" data-button-size="medium">
+            			<a href="{{ url_for('submit_page', path=path) }}" class="sqs-block-button-element--medium sqs-block-button-element">{{ path }}</a>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+        </center>
+</div>
+{% endblock %}
