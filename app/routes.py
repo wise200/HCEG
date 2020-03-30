@@ -243,7 +243,9 @@ def custom_pages():
                 'banner_img': DEFAULT_IMAGE,
                 'text': page.text}
         return render_template('custom.html', info=info)
-    return redirect('https://en.wikipedia.org/wiki/Special:Random')
+    # uncoment this to redirect unfilled links to a random wikipedia page instead of throwing a 404
+    # return redirect('https://en.wikipedia.org/wiki/Special:Random')
+    return abort(404)
 
 def encode_path(path):
     return path.replace('/', ':')
