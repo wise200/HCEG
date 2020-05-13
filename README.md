@@ -3,6 +3,8 @@
 ### Overview
 This is a website developed for [Satire V](https://satirev.org), an organization at Harvard College. This website is a parody of the website for the [Harvard College Consulting Group](https://harvardconsulting.org). This site uses a virtual environment to run a Python server using the Flutter framework.
 
+![Screenshot](screenshot.png)
+
 ### Setup
 These instructions assume you have Python 3.6 or newer installed, as well as the ``venv`` package. To verify installation, you can run ``pip install venv`` or ``pip3 install venv``.
 
