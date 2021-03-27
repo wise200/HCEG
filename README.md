@@ -1,7 +1,7 @@
 # Harvard College Exulting Group
 
 ### Overview
-This is a website developed for [Satire V](https://satirev.org), an organization at Harvard College. This website is a parody of the website for the [Harvard College Consulting Group](https://harvardconsulting.org). This site uses a virtual environment to run a Python server using the Flutter framework.
+This is a website developed for [Satire V](https://satirev.org), an organization at Harvard College. This website is a parody of the website for the [Harvard College Consulting Group](https://harvardconsulting.org). This site uses a virtual environment to run a Python server using the Flask framework.
 
 ![Screenshot](screenshot.png)
 
